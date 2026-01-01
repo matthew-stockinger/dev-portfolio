@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { Button, SectionHeadline } from '$components';
+	import { Button, SectionHeadline, ExperienceTable } from '$components';
 	import image from '$assets/about-me.jpeg';
 	import { goto } from '$app/navigation';
 
 	function onclick() {
-		goto("/#contact-form");
+		goto('/#contact-form');
 	}
 </script>
 
@@ -32,6 +32,8 @@
 			<Button className="mt-nm" {onclick}>Tell me about your project</Button>
 		</div>
 	</div>
+
+	<ExperienceTable />
 </section>
 
 <style>
@@ -46,7 +48,7 @@
 		border-radius: 20px;
 		object-fit: cover;
 	}
-	
+
 	.text {
 		width: 55%;
 		text-align: left;
