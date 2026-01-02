@@ -1,10 +1,9 @@
 <script>
 	import { HeroSection, AboutMeSection } from '$components';
-	
-	let { data } = $props();
 
-	$inspect(data);
+	let { data } = $props();
+	let { workExperience } = data;
 </script>
 
 <HeroSection />
-<AboutMeSection />
+<AboutMeSection {workExperience} />

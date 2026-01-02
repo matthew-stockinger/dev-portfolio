@@ -19,9 +19,9 @@ export type DevExperience = {
   _createdAt: string
   _updatedAt: string
   _rev: string
-  jobTitle?: string
-  company?: string
-  startDate?: string
+  jobTitle: string
+  company: string
+  startDate: string
   endDate?: string
 }
 

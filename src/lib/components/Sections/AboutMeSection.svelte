@@ -2,6 +2,13 @@
 	import { Button, SectionHeadline, ExperienceTable } from '$components';
 	import image from '$assets/about-me.jpeg';
 	import { goto } from '$app/navigation';
+	import type { DevExperience } from '$lib/types/sanity';
+
+	interface AboutMeProps {
+		workExperience: DevExperience[];
+	}
+
+	let { workExperience }: AboutMeProps = $props();
 
 	function onclick() {
 		goto('/#contact-form');
@@ -33,7 +40,7 @@
 		</div>
 	</div>
 
-	<ExperienceTable />
+	<ExperienceTable {workExperience} />
 </section>
 
 <style>
