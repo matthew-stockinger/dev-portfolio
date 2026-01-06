@@ -13,148 +13,84 @@
  */
 
 // Source: schema.json
-export type DevExperience = {
-  _id: string
-  _type: 'devExperience'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  jobTitle: string
-  company: string
-  startDate: string
-  endDate?: string
+type SanityWorkExperience = {
+	_id: string;
+	_type: 'devExperience';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	jobTitle: string;
+	company: string;
+	startDate: string;
+	endDate?: string;
+};
+
+type SanityProject = {
+	_id: string;
+	_type: 'project';
+	_createdAt: string;
+	_updatedAt: string;
+	_rev: string;
+	name?: string;
+	company?: string;
+	slug?: string;
+	image?: {
+		asset?: SanityImageAssetReference;
+		media?: unknown;
+		hotspot?: SanityImageHotspot;
+		crop?: SanityImageCrop;
+		_type: 'image';
+	};
+	dateAccomplished?: string;
+	content?: Array<RawTextContent | RawImageContent>;
+	stack?: Array<string>;
+};
+
+interface RawTextcontent {
+	children: Array<{
+		marks?: Array<string>;
+		text: string;
+		_type: 'span';
+		_key: string;
+	}>;
+	style: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+	listItem?: 'bullet' | 'number';
+	markDefs?: Array<{
+		href?: string;
+		_type: 'link';
+		_key: string;
+	}>;
+	level?: number;
+	_type: 'block';
+	_key: string;
 }
 
-export type SanityImagePaletteSwatch = {
-  _type: 'sanity.imagePaletteSwatch'
-  background?: string
-  foreground?: string
-  population?: number
-  title?: string
+interface RawImageContent {
+	asset: SanityImageAssetReference;
+	media?: unknown;
+	hotspot?: SanityImageHotspot;
+	crop?: SanityImageCrop;
+	_type: 'image';
+	_key: string;
 }
 
-export type SanityImagePalette = {
-  _type: 'sanity.imagePalette'
-  darkMuted?: SanityImagePaletteSwatch
-  lightVibrant?: SanityImagePaletteSwatch
-  darkVibrant?: SanityImagePaletteSwatch
-  vibrant?: SanityImagePaletteSwatch
-  dominant?: SanityImagePaletteSwatch
-  lightMuted?: SanityImagePaletteSwatch
-  muted?: SanityImagePaletteSwatch
+interface ProcessedProject {
+	name: string;
+	company: string;
+	dateAccomplished: string;
+	stack: string[];
+	projectImageUrl: string;
+	slug: string;
+  content: Array<ProcessedTextContent | ProcessedImageContent>;
 }
 
-export type SanityImageDimensions = {
-  _type: 'sanity.imageDimensions'
-  height?: number
-  width?: number
-  aspectRatio?: number
+interface ProcessedTextContent {
+  type: 'text';
+  style: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+  textToRender: string;
 }
 
-export type SanityImageMetadata = {
-  _type: 'sanity.imageMetadata'
-  location?: Geopoint
-  dimensions?: SanityImageDimensions
-  palette?: SanityImagePalette
-  lqip?: string
-  blurHash?: string
-  hasAlpha?: boolean
-  isOpaque?: boolean
+interface ProcessedImageContent {
+  type: 'image',
+  url: string;
 }
-
-export type SanityImageHotspot = {
-  _type: 'sanity.imageHotspot'
-  x?: number
-  y?: number
-  height?: number
-  width?: number
-}
-
-export type SanityImageCrop = {
-  _type: 'sanity.imageCrop'
-  top?: number
-  bottom?: number
-  left?: number
-  right?: number
-}
-
-export type SanityFileAsset = {
-  _id: string
-  _type: 'sanity.fileAsset'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  originalFilename?: string
-  label?: string
-  title?: string
-  description?: string
-  altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
-  uploadId?: string
-  path?: string
-  url?: string
-  source?: SanityAssetSourceData
-}
-
-export type SanityAssetSourceData = {
-  _type: 'sanity.assetSourceData'
-  name?: string
-  id?: string
-  url?: string
-}
-
-export type SanityImageAsset = {
-  _id: string
-  _type: 'sanity.imageAsset'
-  _createdAt: string
-  _updatedAt: string
-  _rev: string
-  originalFilename?: string
-  label?: string
-  title?: string
-  description?: string
-  altText?: string
-  sha1hash?: string
-  extension?: string
-  mimeType?: string
-  size?: number
-  assetId?: string
-  uploadId?: string
-  path?: string
-  url?: string
-  metadata?: SanityImageMetadata
-  source?: SanityAssetSourceData
-}
-
-export type Geopoint = {
-  _type: 'geopoint'
-  lat?: number
-  lng?: number
-  alt?: number
-}
-
-export type Slug = {
-  _type: 'slug'
-  current?: string
-  source?: string
-}
-
-export type AllSanitySchemaTypes =
-  | DevExperience
-  | SanityImagePaletteSwatch
-  | SanityImagePalette
-  | SanityImageDimensions
-  | SanityImageMetadata
-  | SanityImageHotspot
-  | SanityImageCrop
-  | SanityFileAsset
-  | SanityAssetSourceData
-  | SanityImageAsset
-  | Geopoint
-  | Slug
-
-export declare const internalGroqTypeReferenceTo: unique symbol

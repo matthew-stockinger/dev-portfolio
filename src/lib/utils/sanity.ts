@@ -9,3 +9,9 @@ let config: ClientConfig = {
 
 let sanityClient = createClient(config);
 export default sanityClient;
+
+export function processProjectEntries(rawProject: SanityProject) {
+	let processedProject: ProcessedProject = {
+
+	}
+}
