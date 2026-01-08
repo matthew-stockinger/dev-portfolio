@@ -6,15 +6,13 @@ export let load: PageLoad = async () => {
 		'*[_type == "devExperience"] | order(startDate desc)'
 	);
 
-	let rawProjects: SanityProject[] = await sanityClient.fetch('*[_type == "project"]');
+	let rawProjects: SanityProject[] = await sanityClient.fetch(
+		'*[_type == "project"] | order(dateAccomplished desc)'
+	);
 	let projects = rawProjects.map(processProjectEntries);
 
-	console.log("before transformation");
-	console.log(rawProjects[0]);
-	console.log("after");
-	console.log(projects[0]);
-
 	return {
-		workExperience
+		workExperience,
+		projects
 	};
 };

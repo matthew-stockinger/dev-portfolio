@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { DevExperience } from '$lib/types/sanity';
-
+	import type DevExperience from '$lib/types/sanity';
+	
 	interface ExperienceTableProps {
 		workExperience: DevExperience[];
 	}
