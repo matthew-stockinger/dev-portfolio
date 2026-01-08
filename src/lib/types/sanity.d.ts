@@ -31,19 +31,19 @@ type SanityProject = {
 	_createdAt: string;
 	_updatedAt: string;
 	_rev: string;
-	name?: string;
-	company?: string;
-	slug?: string;
-	image?: {
+	name: string;
+	company: string;
+	slug: string;
+	image: {
 		asset?: SanityImageAssetReference;
 		media?: unknown;
 		hotspot?: SanityImageHotspot;
 		crop?: SanityImageCrop;
 		_type: 'image';
 	};
-	dateAccomplished?: string;
-	content?: Array<RawTextContent | RawImageContent>;
-	stack?: Array<string>;
+	dateAccomplished: string;
+	content: Array<RawTextContent | RawImageContent>;
+	stack: Array<string>;
 };
 
 interface RawTextcontent {
@@ -81,16 +81,16 @@ interface ProcessedProject {
 	stack: string[];
 	projectImageUrl: string;
 	slug: string;
-  content: Array<ProcessedTextContent | ProcessedImageContent>;
+	content: Array<ProcessedTextContent | ProcessedImageContent>;
 }
 
 interface ProcessedTextContent {
-  type: 'text';
-  style: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
-  textToRender: string;
+	type: 'text';
+	style: 'normal' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'blockquote';
+	textToRender: string;
 }
 
 interface ProcessedImageContent {
-  type: 'image',
-  url: string;
+	type: 'image';
+	url: string;
 }

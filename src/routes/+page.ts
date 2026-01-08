@@ -1,4 +1,4 @@
-import sanityClient from '$lib/utils/sanity';
+import sanityClient, { processProjectEntries } from '$lib/utils/sanity';
 import type { PageLoad } from './$types';
 
 export let load: PageLoad = async () => {
@@ -7,12 +7,14 @@ export let load: PageLoad = async () => {
 	);
 
 	let rawProjects: SanityProject[] = await sanityClient.fetch('*[_type == "project"]');
-	console.log(rawProjects);
-
 	let projects = rawProjects.map(processProjectEntries);
 
+	console.log("before transformation");
+	console.log(rawProjects[0]);
+	console.log("after");
+	console.log(projects[0]);
 
 	return {
-		workExperience,
+		workExperience
 	};
 };
