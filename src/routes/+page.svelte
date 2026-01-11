@@ -1,5 +1,11 @@
 <script>
-	import { HeroSection, AboutMeSection, MyWorkSection, SkillsSection } from '$components';
+	import {
+		HeroSection,
+		AboutMeSection,
+		MyWorkSection,
+		SkillsSection,
+		ContactSection
+	} from '$components';
 
 	let { data } = $props();
 	// svelte-ignore state_referenced_locally
@@ -10,3 +16,4 @@
 <AboutMeSection {workExperience} />
 <MyWorkSection {projects} />
 <SkillsSection {skills} />
+<ContactSection />
