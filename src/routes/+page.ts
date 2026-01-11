@@ -5,14 +5,15 @@ export let load: PageLoad = async () => {
 	let workExperience: SanityWorkExperience[] = await sanityClient.fetch(
 		'*[_type == "devExperience"] | order(startDate desc)'
 	);
-
 	let rawProjects: SanityProject[] = await sanityClient.fetch(
 		'*[_type == "project"] | order(dateAccomplished desc)'
 	);
-	let projects = rawProjects.map(processProjectEntries);
+	let skills: Skill[] = await sanityClient.fetch(`*[_type == 'skills'][0].skillsList`);
 
+	let projects = rawProjects.map(processProjectEntries);
 	return {
 		workExperience,
-		projects
+		projects,
+		skills
 	};
 };
