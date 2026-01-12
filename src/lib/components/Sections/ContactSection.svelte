@@ -13,6 +13,7 @@
 
 		if (contactMail && contactName && informationAboutProject) {
 			// send data to project
+			fetch('/api/send-mail');
 		} else {
 			isFormInvalid = true;
 		}
@@ -21,7 +22,7 @@
 	}
 
 	// personal comment: don't love this.
-	// purpose is to remove validation classes as soon as user starts making any 
+	// purpose is to remove validation classes as soon as user starts making any
 	// change to form after form validation error.  Not great UX, in my opinion.
 	// could/should? implement this with derived instead of effect.
 	$effect(() => {
