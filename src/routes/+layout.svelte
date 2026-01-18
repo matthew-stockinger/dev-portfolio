@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Header } from '$components';
+	import { Footer, Header } from '$components';
 	import favicon from '$lib/assets/favicon.svg';
 	import '../app.css';
 
@@ -12,3 +12,4 @@
 
 <Header />
 {@render children()}
+<Footer />
